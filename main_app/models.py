@@ -9,10 +9,10 @@ class ShortURL(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     hit_count = models.IntegerField(default=0)
 
-    #in case the user didn't provide shortcode 
+    #Generate Short Code for the URL
     def save(self, *args, **kwargs):
-        if not self.short_code:
-            self.short_code = str(uuid.uuid4())[:8]
+        if not self.short_url:
+            self.short_url = str(uuid.uuid4())[:8]
         super().save(*args, **kwargs)
     
     def __str__(self):
