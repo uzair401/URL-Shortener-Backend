@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'main_app',  
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'url_shortener_API.urls'
@@ -138,10 +141,18 @@ REST_FRAMEWORK = {
 SWAGGER_SETTINGS = {
     'USE_SESSION_AUTH': False,
     'SECURITY_DEFINITIONS': None,
-    'DEFAULT_API_URL': None
+    'VALIDATOR_URL': None,
+    'SUPPORTED_SUBMIT_METHODS': ['get', 'post', 'put', 'delete'],
+    'OPERATIONS_SORTER': 'alpha',
+    'JSON_EDITOR': True,
+    'SHOW_REQUEST_HEADERS': True,
 }
 
 
 import os 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
