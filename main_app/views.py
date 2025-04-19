@@ -51,3 +51,13 @@ def delete_url(request, short_url):
     url_obj.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
 
+
+#Getting Total statistics of the URL
+@api_view(['GET'])
+def statistics(request, short_url):
+    url_obj = ShortURL.objects.filter(short_url=short_url).first()
+    if not url_obj:
+        return Response({"error": "Short URL is required."},status=status.HTTP_400_BAD_REQUEST)
+    
+    serializer = ShortURLSerializer(url_obj)
+    return Response(serializer.data, status=status.HTTP_200_OK)
