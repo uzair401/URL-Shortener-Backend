@@ -12,12 +12,8 @@ from drf_yasg.utils import swagger_auto_schema
 def shorten_url(request):
     serializer = ShortURLSerializer(data=request.data)
     if serializer.is_valid():
-        serialized_url = serializer.data
         serializer.save()
-        serializer = serializer.data
-        serialized_url.pop('hit_count', None)
-        serialized_url.pop('id', None)
-        return Response(serialized_url, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
