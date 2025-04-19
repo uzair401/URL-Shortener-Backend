@@ -138,6 +138,5 @@ REST_FRAMEWORK = {
 SWAGGER_SETTINGS = {
     'USE_SESSION_AUTH': False,
     'SECURITY_DEFINITIONS': None,
-    'DEFAULT_INFO': 'url_shortener_API.urls.schema_view',
     'DEFAULT_API_URL': None
 }
