@@ -27,10 +27,7 @@ def redirect_url(request, short_url):
         
     url_obj.hit_count += 1
     url_obj.save()
-    serializer = ShortURLSerializer(url_obj)
-    serializer.pop('hit_count', None)
-    serializer.pop('id', None)
-    
+    serializer = ShortURLSerializer(url_obj)    
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
