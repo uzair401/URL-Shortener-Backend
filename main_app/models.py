@@ -2,7 +2,7 @@ from django.db import models
 import uuid
 
 # Create your models here.
-class ShortUrl(models.Model):
+class ShortURL(models.Model):
     short_url = models.CharField(max_length=10, unique=True)
     original_url = models.URLField()
     created_at = models.DateTimeField(auto_now_add=True)
