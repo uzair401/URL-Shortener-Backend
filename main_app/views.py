@@ -38,3 +38,13 @@ def update_url(request, short_url):
         serializer.save()
         return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['DELETE'])
+def delete_url(request, short_url):
+    url_obj = ShortURL.objects.filter(short_url=short_url).first()
+    if not url_obj:
+        return Response({"error": "Short URL is required."},status=status.HTTP_400_BAD_REQUEST)
+        
+    url_obj.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
