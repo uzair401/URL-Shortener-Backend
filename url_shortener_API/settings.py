@@ -140,3 +140,8 @@ SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': None,
     'DEFAULT_API_URL': None
 }
+
+
+import os 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
