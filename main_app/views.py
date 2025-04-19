@@ -13,7 +13,10 @@ def shorten_url(request):
     serializer = ShortURLSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        serializer = serializer.data
+        serializer.pop('hit_count', None)
+        serializer.pop('id', None)
+        return Response(serializer, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -35,7 +38,7 @@ def redirect_url(request, short_url):
 
 
 #Updating the URL
-@swagger_auto_schema(methods=['post'], request_body=ShortURLSerializer)
+@swagger_auto_schema(methods=['put'], request_body=ShortURLSerializer)
 @api_view(['PUT'])
 def update_url(request, short_url):
     url_obj = ShortURL.objects.filter(short_url=short_url).first()
