@@ -39,7 +39,7 @@ def update_url(request, short_url):
     if not url_obj:
         return Response({"error": "Short URL is required."},status=status.HTTP_400_BAD_REQUEST)
         
-    serializer = ShortURLSerializer(short_url, data=request.data)
+    serializer = ShortURLSerializer(url_obj, data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data)
