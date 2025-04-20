@@ -2,6 +2,10 @@
 
 This project is a Django-based URL Shortener API that allows users to shorten URLs, retrieve the original URLs, update or delete shortened URLs, and view statistics for each shortened URL. This is a home takeaway assignment project by Innovaxel.
 
+##Deployed Link
+```bash
+https://url-shortener-1ic7.onrender.com/swagger
+```
 ## Features
 
 - **Shorten URL**: Generate a short URL for a given original URL.
