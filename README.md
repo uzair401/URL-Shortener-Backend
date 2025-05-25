@@ -1,4 +1,4 @@
-# URL Shortener API
+# URL Shortener Backend
 
 This project is a Django-based URL Shortener API that allows users to shorten URLs, retrieve the original URLs, update or delete shortened URLs, and view statistics for each shortened URL. This is a home takeaway assignment project by Innovaxel.
 
